@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kaiascan"
+version = "0.1.0"
+description = "Python SDK for Kaiascan API"
+readme = "README.rst"
+authors = [
+  {name = "Mayowa Obisesan", email = "mayowaobi74@gmail.com"}
+]
+maintainers = [
+  {name = "Mayowa Obisesan", email = "mayowaobi74@gmail.com"}
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+license = {text = "MIT license"}
+dependencies = [
+  "requests>=2.25.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/MayowaObisesan/kaiascan_sdk_py/issues"
+changelog = "https://github.com/MayowaObisesan/kaiascan_sdk_py/blob/master/changelog.md"
+homepage = "https://github.com/MayowaObisesan/kaiascan_sdk_py"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
